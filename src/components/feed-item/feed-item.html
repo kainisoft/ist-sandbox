@@ -1,0 +1,43 @@
+<ion-card>
+  <ion-item *ngIf="user">
+    <profile-avatar [user]="user" item-content item-start></profile-avatar>
+    <h2><strong>{{user | displayName}}</strong></h2>
+    <p>{{feedEntity.createdAt | localizedDate}}</p>
+  </ion-item>
+
+  <ng-container [ngSwitch]="feedEntity.entityType">
+    <ng-container *ngSwitchCase="feedTypes.JOIN">
+      <feed-item-join [feedEntity]="feedEntity"></feed-item-join>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="feedTypes.GOODS">
+      <feed-item-goods [feedEntity]="feedEntity"></feed-item-goods>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="feedTypes.SCREAM">
+      <feed-item-scream [feedEntity]="feedEntity"></feed-item-scream>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="feedTypes.IDEA">
+      <feed-item-idea [feedEntity]="feedEntity"></feed-item-idea>
+    </ng-container>
+  </ng-container>
+
+  <ion-item>
+    <button ion-button clear item-start icon-left (click)="proceedLike()">
+      <ion-icon name='thumbs-up'></ion-icon>
+      &nbsp;
+      {{'Like' | translate}}
+    </button>
+
+    <button *ngIf="comment?.likeCount" ion-button icon-only clear item-start class="likes-counter" (click)="likesClickHandler(feedEntity)">
+      {{comment?.likeCount || ''}}
+    </button>
+
+    <button ion-button clear item-end icon-right (click)="commentsClickHandler(feedEntity)">
+      <ion-icon name='text'></ion-icon>
+      &nbsp;
+      {{'Comment' | translate}} &nbsp; {{comment?.replyCount || ''}}
+    </button>
+  </ion-item>
+</ion-card>

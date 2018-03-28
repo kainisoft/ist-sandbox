@@ -1,0 +1,11 @@
+{
+  "BAN_ACCOUNT": "Your account has been disabled. Please, contact support: {{email}}",
+  "FEED_JOIN_DESC": "New user have joined",
+  "VERIFY_EMAIL": "Please, confirm your email address {{email}}. We have sent an activation link.",
+  "COMPLETE_PROFILE_MESSAGE": "Upload avatar and photos into your gallery, fill data about your car",
+  "monthNames": "January,February,March,April,May,June,July,August,September,October,November,December",
+  "FEED_GOODS_DESC": "New selling stuff",
+  "FEED_SCREAM_DESC": "Ask for help",
+  "FEED_IDEA_DESC": "New idea for community",
+  "THANK_FOR_REPORT_USER": "Your complaint will be processed soon"
+}

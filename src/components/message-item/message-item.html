@@ -1,0 +1,14 @@
+<div [ngClass]="{'left': !isOwner, 'right': isOwner}" class="message-wrapper">
+  <div class="chat-bubble" [ngClass]="{'left slide-left': !isOwner, 'right slide-right': isOwner}">
+    <div class="message" [innerHTML]="message.text" autolinker>
+    </div>
+
+    <div class="message-detail">
+      <span class="time">
+        {{message.createdAt | date:'H:mm'}}
+      </span>
+
+      <message-delivered-status [message]="message"></message-delivered-status>
+    </div>
+  </div>
+</div>

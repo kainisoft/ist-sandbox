@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{'Мy gallery' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <photo-uploader
+    [photos]="photos"
+    [entityType]="photoTypes.USER"
+    [entityId]="user.id"
+    [mode]="mode.LIST"
+    (photoUploaded)="onPhotoChanged()"
+    (photoDeleted)="onPhotoChanged()"></photo-uploader>
+</ion-content>

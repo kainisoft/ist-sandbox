@@ -1,0 +1,24 @@
+page-splash-screen {
+  .wrapper {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+
+    .screen {
+      background: {
+        image: url("../assets/imgs/main_logo.png");
+        size: contain;
+        position: center center;
+        repeat: no-repeat;
+      };
+      width: 100%;
+      height: 50%;
+    }
+
+    img {
+      height: 100%;
+      object-fit: none;
+    }
+  }
+}

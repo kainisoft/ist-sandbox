@@ -1,0 +1,14 @@
+feed-item {
+  .social-info {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 5px;
+    border-bottom: 1px solid $mainWhiteColor;
+  }
+  .likes-counter {
+    margin-left: 10px !important;
+  }
+  ion-card-content {
+    padding: 0 !important;
+  }
+}

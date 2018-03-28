@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-navbar primary>
+    <ion-title>{{'Idea' | translate}}</ion-title>
+    <ion-buttons *ngIf="form.valid" end>
+      <button ion-button icon-only (click)="proceedIdea()" class="pop-in">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <photo-uploader [photos]="photos" [entityType]="photoTypes.IDEA" [entityId]="ideaId"></photo-uploader>
+
+  <form [formGroup]="form">
+    <ion-item-group>
+      <ion-item-divider color="light">{{'Info' | translate}}</ion-item-divider>
+      <element-builder [element]="form.getTitle()"></element-builder>
+      <element-builder [element]="form.getDesc()"></element-builder>
+    </ion-item-group>
+  </form>
+</ion-content>

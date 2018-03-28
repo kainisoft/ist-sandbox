@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{'Мy car' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  <ion-list>
+    <form [formGroup]="form">
+      <element-builder [element]="form.getYear()"></element-builder>
+      <element-builder [element]="form.getVolume()"></element-builder>
+      <element-builder [element]="form.getMileAge()"></element-builder>
+      <element-builder [element]="form.getColor()"></element-builder>
+      <element-builder [element]="form.getExterior()"></element-builder>
+      <element-builder [element]="form.getInterior()"></element-builder>
+    </form>
+  </ion-list>
+</ion-content>

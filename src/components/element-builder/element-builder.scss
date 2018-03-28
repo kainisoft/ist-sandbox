@@ -1,0 +1,31 @@
+element-builder {
+  ion-label {
+    font: {
+      size: 13px;
+    };
+  }
+  ion-item {
+    border-bottom: none !important;
+    box-shadow: none !important;
+  }
+  .label-ios + {
+    text-input,
+    password-input,
+    email-input,
+    select-input,
+    date-time-input {
+      .text-input {
+        width: calc(100% - (16px / 2) - 16px);
+      }
+    }
+  }
+  .item-inner {
+    border-bottom: 1px solid #c8c7cc !important;
+    box-shadow: none !important;
+  }
+  .item {
+    transition: all 1s ease;
+    background-color: #100815;
+    color: $mainWhiteColor;
+  }
+}

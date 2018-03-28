@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar primary>
+    <ion-title>{{'Goods' | translate}}</ion-title>
+    <ion-buttons *ngIf="photos.length && form.valid" end>
+      <button ion-button icon-only (click)="proceedGoods($event)" class="pop-in">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <photo-uploader [photos]="photos" [entityType]="photoTypes.GOODS" [entityId]="goodsId"></photo-uploader>
+
+  <form [formGroup]="form">
+    <ion-item-group>
+      <ion-item-divider color="light">{{'Goods data' | translate}}</ion-item-divider>
+      <element-builder [element]="form.getName()"></element-builder>
+      <element-builder [element]="form.getPrice()"></element-builder>
+      <element-builder [element]="form.getDesc()"></element-builder>
+    </ion-item-group>
+  </form>
+</ion-content>

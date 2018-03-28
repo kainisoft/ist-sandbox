@@ -1,0 +1,15 @@
+no-items > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  ion-icon {
+    font-size: 7em;
+  }
+
+  h1 {
+    text-align: center;
+  }
+}

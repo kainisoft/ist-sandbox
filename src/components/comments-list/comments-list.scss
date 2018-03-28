@@ -1,0 +1,37 @@
+comments-list {
+  .add-comment-form {
+    ion-label,
+    ion-item {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .footer-btn {
+      font-size: 2em;
+    }
+    .item-inner,
+    element-builder .item-inner {
+      border-bottom: none !important;
+    }
+    input {
+      margin: {
+        top: 0;
+        bottom: 0;
+      }
+    }
+  }
+  .placeholder {
+    height: 150px;
+  }
+
+  .load-more {
+    margin: 5px 0;
+    height: 2.1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    loading .container ion-spinner {
+      height: 2em;
+    }
+  }
+}

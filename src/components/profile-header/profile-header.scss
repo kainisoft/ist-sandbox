@@ -1,0 +1,98 @@
+profile-header {
+  height: 270px;
+  display: block;
+
+  .profile-bg {
+    position: absolute;
+    width: 100%;
+    height: 150px;
+    top: 0;
+    background: {
+      size: cover;
+      repeat: no-repeat;
+      position: center center;
+      image: url('../assets/imgs/profile/profile-cover.jpg');
+    };
+    text-align: center;
+  }
+
+  #content {
+    position: relative;
+    background-color: white;
+  }
+
+  #profile-info {
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    text-align: center;
+    top: 50px;
+  }
+
+  #profile-image {
+    display: block;
+    border-radius: 100px;
+    border: 1px solid #fff;
+    width: 128px;
+    height: 128px;
+    margin: 35px auto 0;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.7);
+    object-fit: cover;
+  }
+
+  #profile-name {
+    color: #444;
+    font-size: 26px;
+  }
+
+  .photo-list ion-card {
+    position: relative;
+
+    ion-icon {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      font-size: 2em;
+    }
+  }
+
+  .add-photo {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    ion-icon {
+      font-size: 4em;
+    }
+  }
+
+  .change-cover {
+    position: absolute;
+    z-index: 10;
+    right: 0;
+  }
+
+  .avatar-container {
+    display: inline-block;
+    position: relative;
+
+    #profile-image {
+      display: block;
+      border-radius: 100px;
+      border: 1px solid #fff;
+      width: 128px;
+      height: 128px;
+      box-shadow: 0 0 4px rgba(0,0,0,0.7);
+      object-fit: cover;
+    }
+
+    button {
+      position: absolute !important;
+      bottom: 0;
+      right: 0;
+      font-size: 1.2rem !important;
+    }
+  }
+}

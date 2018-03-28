@@ -1,0 +1,26 @@
+<ng-container *ngIf="user && lastMessage else loading">
+  <ion-item (click)="openChatPage()">
+    <profile-thumbnail [user]="user" item-start></profile-thumbnail>
+
+    <strong class="message-text">{{user | displayName}}</strong>
+    <p class="message-text-wrapper">
+      <message-delivered-status [message]="lastMessage"></message-delivered-status>
+      <span class="message-text">{{lastMessage.text}}</span>
+    </p>
+
+    <ion-note item-end class="note">
+      <div>
+        {{lastMessage.createdAt | timeAgo | translate}}
+      </div>
+
+      <div *ngIf="chat.counter[uid]" class="counter">
+        <ion-badge color="secondary">{{chat.counter[uid]}}</ion-badge>
+      </div>
+
+    </ion-note>
+  </ion-item>
+</ng-container>
+
+<ng-template #loading>
+  <loading></loading>
+</ng-template>

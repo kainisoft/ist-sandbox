@@ -1,0 +1,40 @@
+<ion-list>
+  <ion-item-group>
+    <ion-item-divider color="dark">{{'Profile' | translate}}</ion-item-divider>
+    <ion-item>
+      <ion-label>{{'Birth Day' | translate}}</ion-label>
+      <ion-label>{{user.profile.birthDay}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{'E-mail' | translate}}</ion-label>
+      <ion-label>{{user.profile.email}}</ion-label>
+    </ion-item>
+  </ion-item-group>
+  <ion-item-group>
+    <ion-item-divider color="light">{{'Car' | translate}}</ion-item-divider>
+    <ion-item>
+      <ion-label>{{'Year' | translate}}</ion-label>
+      <ion-label>{{car?.year}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{'Volume' | translate}}</ion-label>
+      <ion-label>{{car?.volume}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{'Mileage' | translate}}</ion-label>
+      <ion-label>{{car?.mileage}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{'Color' | translate}}</ion-label>
+      <ion-label>{{car?.color | translate}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{'Exterior' | translate}}</ion-label>
+      <ion-label class="white-space-normal">{{exterior}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{'Interior' | translate}}</ion-label>
+      <ion-label class="white-space-normal">{{interior}}</ion-label>
+    </ion-item>
+  </ion-item-group>
+</ion-list>

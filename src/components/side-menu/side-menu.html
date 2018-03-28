@@ -1,0 +1,30 @@
+<ion-menu [content]="content" type="overlay" id="menu-material">
+  <ion-content>
+    <ng-container *ngIf="user">
+      <div class="menu-header" [ngStyle]="{'background-image': 'url('+ (user.profile.cover ? user.profile.cover : 'assets/imgs/profile/profile-cover.jpg')+')'}">
+        <img [src]="user.profile.avatarThumbnail"
+             class="user-avatar round"
+             onerror="this.src='assets/imgs/profile/avatar-placeholder.png'"
+        />
+        <p class="name">{{user | displayName}}</p>
+        <p class="e-mail">{{user.profile.email}}</p>
+      </div>
+    </ng-container>
+
+    <ion-list no-lines>
+      <button *ngFor="let menu of menus" (click)="openPage(menu)" menuClose="left" ion-item detail-none [ngClass]="menu.class">
+        <ion-icon [name]="menu.icon" item-left></ion-icon>
+        {{menu.title | translate}}
+        <ion-badge *ngIf="menu.notice" color="secondary" item-right>{{menu.notice}}</ion-badge>
+      </button>
+    </ion-list>
+  </ion-content>
+
+  <ion-footer padding>
+    <ion-buttons end>
+      <button ion-button end menuClose (click)="logout()">
+        {{'Log Out' | translate}}
+      </button>
+    </ion-buttons>
+  </ion-footer>
+</ion-menu>

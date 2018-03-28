@@ -1,0 +1,21 @@
+<ng-container *ngIf="isOwner" [ngSwitch]="message.deliveryStatus">
+  <ng-container *ngSwitchCase="deliveryStatuses.SENDING">
+    <ion-icon name="clock"></ion-icon>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="deliveryStatuses.STORED">
+    <ion-icon name="checkmark"></ion-icon>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="deliveryStatuses.DELIVERED">
+    <ion-icon name="done-all"></ion-icon>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="deliveryStatuses.READ">
+    <ion-icon name="done-all" color="secondary"></ion-icon>
+  </ng-container>
+
+  <ng-container *ngSwitchDefault>
+    <ion-icon name="clock"></ion-icon>
+  </ng-container>
+</ng-container>

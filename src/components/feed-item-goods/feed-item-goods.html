@@ -1,0 +1,17 @@
+<ng-container *ngIf="goods else loading">
+  <p padding-horizontal><strong>{{'FEED_GOODS_DESC' | translate}}</strong></p>
+
+  <ion-card-content>
+    <photo-list [entityType]="photoTypes.GOODS" [entityId]="feedEntity.data.id"></photo-list>
+
+    <div padding-horizontal>
+      <p>{{goods.name}}</p>
+      <p>{{goods.price}}</p>
+      <p *ngIf="goods.desc">{{goods.desc}}</p>
+    </div>
+  </ion-card-content>
+</ng-container>
+
+<ng-template #loading>
+  <loading></loading>
+</ng-template>

@@ -1,0 +1,12 @@
+<ng-container *ngIf="user else loading">
+  <ion-item (click)="onClick()">
+    <ion-avatar item-start>
+      <img [src]="user.profile.avatarThumbnail" onerror="this.src = 'assets/imgs/profile/avatar-placeholder.png'">
+    </ion-avatar>
+    <p>{{user | displayName}} {{'replied' | translate}} &nbsp; - &nbsp; {{commentEntity.replyCount}}</p>
+  </ion-item>
+</ng-container>
+
+<ng-template #loading>
+  <loading></loading>
+</ng-template>

@@ -1,0 +1,16 @@
+<button *ngIf="isOwner" ion-button color="light" clear icon-only round class="change-cover pop-in" (click)="changeCover()">
+  <ion-icon name="md-image"></ion-icon>
+</button>
+<div *ngIf="!user?.profile.cover" class="profile-bg"></div>
+<div *ngIf="user?.profile.cover" class="profile-bg" [style.backgroundImage]="'url(' + user.profile.cover + ')'"></div>
+<div id="content">
+  <div id="profile-info">
+    <div class="avatar-container">
+      <img id="profile-image" [src]="user?.profile.avatar" onerror="this.src = 'assets/imgs/profile/avatar-placeholder.png'">
+      <button *ngIf="isOwner" ion-button round icon-only (click)="changeAvatar()" class="pop-in">
+        <ion-icon name='ios-camera' is-active="false"></ion-icon>
+      </button>
+    </div>
+    <h3 id="profile-name">{{user?.profile.firstName}} {{user?.profile.lastName}}</h3>
+  </div>
+</div>

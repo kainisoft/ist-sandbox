@@ -1,0 +1,7 @@
+<ion-textarea
+  [formControl]="getElement()"
+  [(ngModel)]="element.value"
+  [placeholder]="(element.getPlaceholder() | translate) || ''"
+  autosize>
+
+</ion-textarea>

@@ -1,0 +1,25 @@
+<ion-content no-padding>
+  <logo></logo>
+  <ion-grid no-padding margin-top padding-top>
+    <ion-row padding>
+      <ion-col>
+        <ion-label text-center>
+          <span translate [translateParams]="{email: user.email}" no-margin class="white-space-normal">
+            VERIFY_EMAIL
+          </span>
+        </ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row padding text-center>
+      <ion-col>
+        <button ion-button (click)="resending()">{{'Send again' | translate}}</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-buttons end>
+    <button ion-button (click)="signOut()" color="light" clear>{{'Log Out' | translate}}</button>
+  </ion-buttons>
+</ion-footer>

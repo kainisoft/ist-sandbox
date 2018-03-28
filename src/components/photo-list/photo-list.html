@@ -1,0 +1,17 @@
+<ng-container *ngIf="photos else loading">
+  <div *ngIf="photos.length else noPhotos" padding>
+    <ion-slides [pager]="true">
+      <ion-slide *ngFor="let photo of photos; index as i;">
+        <div class="img" [style.backgroundImage]="'url(' + photo.url + ')'" (click)="openViewer(i)"></div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ng-container>
+
+<ng-template #loading>
+  <loading></loading>
+</ng-template>
+
+<ng-template #noPhotos>
+  <no-items *ngIf="showIfIsEmpty" message="No Photos" icon="images"></no-items>
+</ng-template>

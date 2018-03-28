@@ -1,0 +1,25 @@
+message-list {
+  .scroll-content {
+    border-top: none !important;
+  }
+
+  .message-date {
+    text-align: center;
+    padding: 10px;
+
+    ion-badge {
+      background-color: $infoColor;
+      font-weight: normal;
+    }
+  }
+
+  .new-message {
+    text-align: center;
+
+    ion-badge {
+      margin: 15px;
+      padding: 15px;
+      border-radius: 30px;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+<ng-container *ngIf="comments else loading">
+  <ng-container *ngIf="comments.length else noItems">
+    <ion-list inset class="comments-list">
+      <ng-container *ngFor="let comment of comments; trackBy: trackByFn">
+        <comment-item [commentEntity]="comment" [level]="levels - 1" [path]="path"></comment-item>
+      </ng-container>
+    </ion-list>
+  </ng-container>
+
+  <ng-container [ngSwitch]="loadState">
+    <ng-container *ngSwitchCase="loadStates.WAIT">
+      <div class="load-more" text-center>
+        <button ion-button small round outline color="light" (click)="loadMore()">{{'Load more' | translate}}</button>
+      </div>
+    </ng-container>
+    <ng-container *ngSwitchCase="loadStates.LOADING">
+      <div class="load-more">
+        <loading></loading>
+      </div>
+    </ng-container>
+  </ng-container>
+
+
+  <form [formGroup]="form" (submit)="addComment()" class="add-comment-form">
+    <ion-item>
+      <element-builder ion-content [element]="form.getTextElement()"></element-builder>
+      <button ion-button clear item-end>
+        <ion-icon class="footer-btn" name="md-send"></ion-icon>
+      </button>
+    </ion-item>
+  </form>
+</ng-container>
+
+<ng-template #loading>
+  <div class="placeholder">
+    <loading></loading>
+  </div>
+</ng-template>
+
+<ng-template #noItems>
+  <div *ngIf="levels" class="placeholder">
+    <no-items message="No comments" [icon]="null"></no-items>
+  </div>
+</ng-template>

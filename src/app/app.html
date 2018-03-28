@@ -1,0 +1,7 @@
+<div class="theme-dark">
+  <ng-container *ngIf="user && user.isCompleted">
+    <side-menu [content]="root"></side-menu>
+  </ng-container>
+
+  <ion-nav #root [root]="rootPage" swipeBackEnabled="false"></ion-nav>
+</div>

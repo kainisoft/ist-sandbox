@@ -1,0 +1,35 @@
+<ng-container [ngSwitch]="mode">
+  <ng-container *ngSwitchCase="modes.SLIDE">
+    <ion-card>
+      <ion-card-content>
+        <ion-slides #slides [pager]="true">
+          <ion-slide *ngFor="let photo of photos; let i = index; trackBy: trackByFn">
+            <div class="img" [style.backgroundImage]="'url(' + photo.dataUrl + ')'"></div>
+            <ion-icon (click)="deletePhoto(i)" name="close-circle" class="delete"></ion-icon>
+          </ion-slide>
+          <ion-slide *ngIf="photos.length < maxUpload" class="upload-slide">
+            <div (click)="uploadPhoto()" class="add-goods-btn">
+              <ion-icon name="ios-add-circle-outline"></ion-icon>
+              <span>{{'Upload photo' | translate}}</span>
+            </div>
+          </ion-slide>
+        </ion-slides>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="modes.LIST">
+    <ng-container *ngFor="let photo of photos; let i = index; trackBy: trackByFn">
+      <ion-card>
+        <div class="img" [style.backgroundImage]="'url(' + photo.dataUrl + ')'"></div>
+        <ion-icon (click)="deletePhoto(i)" name="close-circle" class="delete"></ion-icon>
+      </ion-card>
+    </ng-container>
+    <ion-card *ngIf="photos.length < maxUpload" class="upload-slide">
+      <div (click)="uploadPhoto()" class="add-goods-btn">
+        <ion-icon name="ios-add-circle-outline"></ion-icon>
+        <span>{{'Upload photo' | translate}}</span>
+      </div>
+    </ion-card>
+  </ng-container>
+</ng-container>

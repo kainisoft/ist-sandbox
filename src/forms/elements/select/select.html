@@ -1,0 +1,7 @@
+<ion-select
+  [formControl]="getElement()"
+  [(ngModel)]="element.value"
+  [multiple]="element.getMultiple()"
+  [placeholder]="">
+  <ion-option *ngFor="let option of options; trackBy: trackByFn" [value]="option.value">{{option.label | translate}}</ion-option>
+</ion-select>

@@ -1,0 +1,34 @@
+photo-uploader {
+  ion-card {
+    position: relative;
+  }
+
+  .img {
+    height: 300px;
+    background: {
+      size: cover;
+      repeat: no-repeat;
+      position: center center;
+    };
+  }
+
+  .delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 2em;
+    padding: 5px;
+  }
+
+  .add-goods-btn {
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    ion-icon {
+      font-size: 4em;
+    }
+  }
+}

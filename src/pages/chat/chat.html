@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar primary>
+    <ion-title>
+      <profile-thumbnail [user]="user" item-start></profile-thumbnail>
+      <span *ngIf="!!user" (click)="openProfilePage()" padding-left>{{user | displayName}}</span>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content #content no-padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ng-container *ngIf="chat else loadding">
+    <message-list [chat]="chat" #messageList [content]="content"></message-list>
+  </ng-container>
+</ion-content>
+
+<ion-footer>
+  <form [formGroup]="form">
+    <ion-item class="message">
+      <element-builder [element]="form.getMessage()"></element-builder>
+      <button ion-button clear (click)="send()" item-end>
+        <ion-icon class="footer-btn" name="send"></ion-icon>
+      </button>
+    </ion-item>
+  </form>
+</ion-footer>
+
+<ng-template #loadding>
+  <loading></loading>
+</ng-template>

@@ -1,0 +1,10 @@
+<ng-container *ngIf="user else loading">
+  <ion-item (click)="openProfilePage()">
+    <profile-thumbnail item-start [user]="user"></profile-thumbnail>
+    <h2>{{user | displayName}}</h2>
+  </ion-item>
+</ng-container>
+
+<ng-template #loading>
+  <loading></loading>
+</ng-template>

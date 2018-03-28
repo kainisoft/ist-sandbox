@@ -1,0 +1,11 @@
+<ion-card (click)="openFeedPage()">
+  <photo-list [entityType]="photoTypes.GOODS" [entityId]="goods.id"></photo-list>
+  <ion-card-content>
+    <h2 class="card-title">
+      {{goods.name}}
+    </h2>
+    <p>
+      {{goods.price}}
+    </p>
+  </ion-card-content>
+</ion-card>

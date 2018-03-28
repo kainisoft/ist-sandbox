@@ -1,0 +1,10 @@
+select-input {
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+  max-width: 45%;
+
+  ion-select {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar primary>
+    <ion-title>{{user | displayName}}</ion-title>
+    <ion-buttons *ngIf="menuItems.length" end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  <profile-header [uid]="user.id"></profile-header>
+
+  <ion-segment [(ngModel)]="pageType" padding-bottom>
+    <ion-segment-button [value]="pageTypes.INFO">
+      {{'Account' | translate}}
+    </ion-segment-button>
+    <ion-segment-button [value]="pageTypes.PHOTOS">
+      {{'Photos' | translate}}
+    </ion-segment-button>
+  </ion-segment>
+
+  <div class="content-wrapper">
+    <ng-container [ngSwitch]="pageType">
+      <ng-container *ngSwitchCase="pageTypes.INFO">
+        <profile-details [user]="user"></profile-details>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="pageTypes.PHOTOS">
+        <photo-list [entityType]="entityType" [entityId]="user.id"></photo-list>
+      </ng-container>
+    </ng-container>
+  </div>
+</ion-content>

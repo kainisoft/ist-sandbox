@@ -1,0 +1,28 @@
+<ion-header main-header title="Settings"></ion-header>
+
+<ion-content>
+  <ng-container *ngIf="user else loading">
+    <ion-list>
+      <ion-list-header (click)="openProfileSettings()">
+        <ion-avatar item-start>
+          <img [src]="user.profile.avatarThumbnail" onerror="this.src = 'assets/imgs/profile/avatar-placeholder.png'">
+        </ion-avatar>
+        <p class="username">{{user | displayName}}</p>
+      </ion-list-header>
+    </ion-list>
+    <ion-list>
+      <ion-item (click)="openCarSettings()">
+        <ion-icon name='ios-car' item-start></ion-icon>
+        <ion-label>{{'Мy car' | translate}}</ion-label>
+      </ion-item>
+      <ion-item (click)="openPhotoSettings()">
+        <ion-icon name='ios-images' item-start></ion-icon>
+        <ion-label>{{'Мy gallery' | translate}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ng-container>
+</ion-content>
+
+<ng-template #loading>
+  <loading></loading>
+</ng-template>

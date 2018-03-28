@@ -1,0 +1,25 @@
+<ng-container *ngIf="entities else loading">
+  <ng-container *ngIf="entities.length else noItems">
+    <ion-list inset class="like-list">
+      <ng-container *ngFor="let like of entities; trackBy: trackByFn">
+        <like-item item-content [likeEntity]="like"></like-item>
+      </ng-container>
+    </ion-list>
+  </ng-container>
+</ng-container>
+
+<ng-template #loading>
+  <loading></loading>
+</ng-template>
+
+<ng-container [ngSwitch]="loadMoreState">
+  <ng-container *ngSwitchCase="loadMoreStates.AWAITING || loadMoreStates.LOADING">
+    <ion-infinite-scroll (ionInfinite)="$event.waitFor(loadMore())">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ng-container>
+</ng-container>
+
+<ng-template #noItems>
+  <no-items message="No likes" [icon]="null"></no-items>
+</ng-template>

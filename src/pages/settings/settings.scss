@@ -1,0 +1,23 @@
+page-settings {
+  ion-list-header {
+    padding: 20px;
+  }
+  ion-avatar {
+    width: auto !important;
+    height: auto !important;
+    img {
+      width: 64px !important;
+      height: 64px !important;
+      object-fit: cover;
+    }
+  }
+  .input-wrapper {
+    padding: 10px;
+  }
+  .username {
+    font-size: 1.3em;
+  }
+  .label {
+    color: #7f7f7f;
+  }
+}

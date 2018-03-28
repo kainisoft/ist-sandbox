@@ -1,0 +1,22 @@
+<ion-item *ngIf="user" [ngClass]="'level' + level">
+  <profile-thumbnail item-start [user]="user"></profile-thumbnail>
+
+  <div class="bubble">
+    <h2>{{user.profile.firstName}} {{user.profile.lastName}}</h2>
+    <p class="text">{{commentEntity.text}}</p>
+    <ion-icon *ngIf="commentEntity.likeCount" (click)="openLikesPage()" name="thumbs-up" float-right class="like-counter">
+      <span>&nbsp;{{commentEntity.likeCount}}</span>
+    </ion-icon>
+  </div>
+
+  <ion-buttons start>
+    <span class="time">{{commentEntity.createdAt | timeAgo | translate}}</span>
+    <button ion-button clear (click)="proceedLike()">{{'Like' | translate}}</button>
+    <button ion-button clear (click)="showReplays()">{{'Replay' | translate}}</button>
+  </ion-buttons>
+
+  <last-reply *ngIf="!componentRef && innerLevel && commentEntity.lastReply" [commentEntity]="commentEntity" (click)="onLastReplyClick()"></last-reply>
+
+  <ng-template #reply></ng-template>
+</ion-item>
+

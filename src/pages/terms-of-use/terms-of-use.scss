@@ -1,0 +1,23 @@
+page-terms-of-use {
+  font: {
+    size: medium;
+  };
+
+  .contents {
+    list-style: {
+      type: decimal;
+    };
+  }
+
+  .custom-nested-list {
+    counter-reset: item;
+    li {
+      display: block;
+
+      &:before {
+        content: counters(item, ".") " ";
+        counter-increment: item;
+      }
+    }
+  }
+}

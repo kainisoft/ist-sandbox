@@ -1,0 +1,4 @@
+<ion-avatar (click)="openProfilePage()">
+  <img [src]="user.profile.avatarThumbnail" onerror="this.src = 'assets/imgs/profile/avatar-placeholder.png'">
+  <span class="status" *ngIf="user.presence === statuses.ONLINE"></span>
+</ion-avatar>

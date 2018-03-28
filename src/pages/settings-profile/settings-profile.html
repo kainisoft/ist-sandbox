@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar primary>
+    <ion-title>{{'User Settings' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content no-padding>
+  <profile-header [uid]="user.id" [editable]="true"></profile-header>
+  <div id="content">
+    <form [formGroup]="form">
+      <element-builder [element]="form.getFirstName()"></element-builder>
+      <element-builder [element]="form.getLastName()"></element-builder>
+      <element-builder [element]="form.getBirthDay()"></element-builder>
+      <element-builder [element]="form.getEmail()"></element-builder>
+    </form>
+  </div>
+</ion-content>

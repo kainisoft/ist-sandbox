@@ -1,0 +1,85 @@
+message-item {
+  display: block;
+
+  .message-wrapper {
+    position: relative;
+    display: flex;
+  }
+
+  .right {
+    justify-content: flex-end;
+  }
+
+  .left {
+    justify-content: flex-start;
+  }
+
+  .message {
+    font-size: 14px;
+    min-width: 40px;
+    margin-bottom: 5px;
+  }
+
+  .message-detail {
+    display: flex;
+    justify-content: flex-end;
+    min-width: 60px;
+  }
+
+  .chat-bubble {
+    border-radius: 5px;
+    display: inline-block;
+    padding: 10px;
+    position: relative;
+    margin-bottom: 10px;
+    max-width: 80%;
+  }
+
+  .chat-bubble.left {
+    background-color: $contentDarkColor;
+
+    .message-detail {
+      color: $infoColor;
+    }
+  }
+
+  .chat-bubble.right {
+    background-color: $mainWhiteColor;
+    color: #fff;
+    float: right;
+    .message {
+      color: $mainDarkColor;
+    }
+    .message-detail {
+      color: $infoColor;
+    }
+    .time {
+      margin-right: 10px;
+    }
+  }
+
+  &.tail {
+    .chat-bubble:before {
+      content: "\00a0";
+      display: block;
+      height: 10px;
+      width: 10px;
+      position: absolute;
+      -webkit-transform: rotate(45deg);
+    }
+
+    .chat-bubble.left:before {
+      background-color: $contentDarkColor;
+      top: 4px;
+      left: -4px;
+      -webkit-transform: rotate(45deg);
+    }
+
+    .chat-bubble.right:before {
+      background-color: $mainWhiteColor;
+      right: -4px;
+      top: 4px;
+    }
+  }
+
+}

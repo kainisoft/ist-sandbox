@@ -1,0 +1,87 @@
+<ion-content no-padding class="no-scroll">
+  <div class="scroll-content">
+    <logo></logo>
+
+    <div class="login-switcher">
+      <ion-segment [(ngModel)]="formType" color="primary" padding>
+        <ion-segment-button [value]="formTypes.SIGNIN">
+          {{'LogIn' | translate}}
+        </ion-segment-button>
+        <ion-segment-button [value]="formTypes.SIGNUP">
+          {{'SignUp' | translate}}
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <div class="login-container" [ngSwitch]="formType" padding>
+
+      <!--Login form-->
+      <form *ngSwitchCase="formTypes.SIGNIN" [formGroup]="loginForm" (ngSubmit)="onLogin()" class="login-form">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <element-builder [element]="loginForm.getEmail()"></element-builder>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <element-builder [element]="loginForm.getPassword()"></element-builder>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div class="login-actions" align-self-end>
+          <ion-list no-lines padding-top no-margin>
+            <button ion-button full round type="submit">
+              {{'Log In' | translate}}
+            </button>
+            <ion-item>
+              <button ion-button full clear (click)="resetPassword();" type="button">
+                {{'Forgot Password' | translate}}
+              </button>
+            </ion-item>
+          </ion-list>
+        </div>
+      </form>
+
+      <!--Join form-->
+      <form *ngSwitchCase="formTypes.SIGNUP" [formGroup]="joinForm" (ngSubmit)="onJoin()" class="login-form">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <element-builder [element]="joinForm.getFirstName()"></element-builder>
+            </ion-col>
+            <ion-col>
+              <element-builder [element]="joinForm.getLastName()"></element-builder>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <element-builder [element]="joinForm.getEmail()"></element-builder>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <element-builder [element]="joinForm.getPassword()"></element-builder>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div class="login-actions" align-self-end>
+          <ion-list no-lines padding-top no-margin>
+            <button ion-button full round>
+              {{'Join' | translate}}
+            </button>
+            <ion-item>
+              <ion-label class="terms-of-use" text-center>
+                {{'By signing up you indicate that you have read and agree to the' | translate}}
+                <a href="javascript://" (click)="openTermsOfUse()">
+                  {{'Terms of Use' | translate}}
+                </a>
+              </ion-label>
+            </ion-item>
+          </ion-list>
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,16 @@
+<ng-container *ngIf="scream else loading">
+  <p padding-horizontal><strong>{{'FEED_SCREAM_DESC' | translate}}</strong></p>
+
+  <ion-card-content>
+    <photo-list [entityType]="photoTypes.SCREAM" [entityId]="feedEntity.data.id" [showIfIsEmpty]="false"></photo-list>
+
+    <div padding-horizontal>
+      <p>{{scream.title}}</p>
+      <p *ngIf="scream.desc">{{scream.desc}}</p>
+    </div>
+  </ion-card-content>
+</ng-container>
+
+<ng-template #loading>
+  <loading></loading>
+</ng-template>

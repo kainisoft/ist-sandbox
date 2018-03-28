@@ -1,0 +1,10 @@
+<ion-content>
+  <ion-list>
+    <ng-container *ngFor="let menu of menuItems">
+      <ion-item (click)="dismiss(menu)">
+        <ion-icon [name]="menu.icon"></ion-icon>
+        {{menu.label | translate}}
+      </ion-item>
+    </ng-container>
+  </ion-list>
+</ion-content>

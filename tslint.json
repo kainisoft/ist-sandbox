@@ -1,0 +1,74 @@
+{
+  "rules": {
+    "only-arrow-functions": true,
+    "no-duplicate-variable": true,
+    "no-unused-variable": [
+      true
+    ],
+    "no-unused-expression": [true, "allow-fast-null-checks"],
+    "no-eval": true,
+    "no-internal-module": true,
+    "no-trailing-whitespace": true,
+    "no-var-keyword": true,
+    "no-consecutive-blank-lines": true,
+    "one-line": [
+      true,
+      "check-open-brace",
+      "check-whitespace"
+    ],
+    "comment-format": [
+      true,
+      "check-space"
+    ],
+    "indent": [
+      true,
+      "spaces"
+    ],
+    "quotemark": [
+      true,
+      "single"
+    ],
+    "semicolon": true,
+    "triple-equals": [
+      true,
+      "allow-null-check"
+    ],
+    "typedef": [true, "call-signature", "parameter"],
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      }
+    ],
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format"
+    ],
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-separator",
+      "check-type"
+    ],
+    "newline-before-return": true,
+    "eofline": true
+  },
+  "rulesDirectory": [
+    "node_modules/tslint-eslint-rules/dist/rules"
+  ],
+  "rxjs-add": {
+    "options": [{
+      "allowElsewhere": false,
+      "allowUnused": false,
+      "file": "./src/rxjs-imports.ts"
+    }],
+    "severity": "error"
+  }
+}

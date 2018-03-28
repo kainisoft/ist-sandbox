@@ -1,0 +1,22 @@
+<ion-item [formGroup]="element.getParent()">
+  <ion-label *ngIf="element.getLabel()">{{element.getLabel() | translate}}</ion-label>
+  <ion-label *ngIf="element.getIcon()">
+    <ion-icon [name]="element.getIcon()"></ion-icon>
+  </ion-label>
+
+  <ng-container [ngSwitch]="element.getType()" item-content>
+    <text-input *ngSwitchCase="elementTypes.TEXT" [element]="element" class="text-input"></text-input>
+
+    <email-input *ngSwitchCase="elementTypes.EMAIL" [element]="element" class="text-input"></email-input>
+
+    <password-input *ngSwitchCase="elementTypes.PASSWORD" [element]="element" class="text-input"></password-input>
+
+    <date-time-input *ngSwitchCase="elementTypes.DATE_TIME" [element]="element" class="item-datetime"></date-time-input>
+
+    <select-input *ngSwitchCase="elementTypes.SELECT" [element]="element" class="item-select"></select-input>
+
+    <text-area-input *ngSwitchCase="elementTypes.TEXT_AREA" [element]="element"></text-area-input>
+
+    <number-input *ngSwitchCase="elementTypes.NUMBER" [element]="element"></number-input>
+  </ng-container>
+</ion-item>

@@ -1,0 +1,37 @@
+<ng-container *ngIf="lists else loading">
+  <ng-container *ngIf="lists.length else noItems">
+    <ion-list padding-horizontal>
+      <ng-container *ngFor="let list of lists; trackBy: trackByDate">
+        <div item-content class="message-date">
+          <ion-badge>
+            {{list.date | translate}}
+          </ion-badge>
+        </div>
+
+        <ng-container *ngFor="let message of list.messages; index as i; first as isFirst; trackBy: trackByFn">
+          <ng-container *ngIf="isNewMessage(message)">
+            <div class="new-message">
+              <ion-badge color="secondary">{{'New messages' | translate}}</ion-badge>
+            </div>
+          </ng-container>
+
+          <message-item
+            item-content
+            [id]="message.id"
+            [message]="message"
+            (onRender)="messageDidRender($event)"
+            [ngClass]="{'tail': isFirst || hasTail(i, message, list.messages)}">
+          </message-item>
+        </ng-container>
+      </ng-container>
+    </ion-list>
+  </ng-container>
+</ng-container>
+
+<ng-template #loading>
+  <loading></loading>
+</ng-template>
+
+<ng-template #noItems>
+  <no-items message="No Messages, yet" icon="chatbubbles"></no-items>
+</ng-template>

@@ -1,0 +1,17 @@
+<ion-card (click)="openFeedPage()">
+  <photo-list [entityType]="photoTypes.SCREAM" [entityId]="scream.id" [showIfIsEmpty]="false"></photo-list>
+  <ion-card-content>
+    <h2 class="card-title">
+      {{scream.title}}
+    </h2>
+    <p>
+      {{scream.desc}}
+    </p>
+  </ion-card-content>
+
+  <ion-item *ngIf="comment && comment.replyCount">
+    <ion-icon name='chatbubbles' item-start></ion-icon>
+    {{'Advices' | translate}}
+    <ion-badge item-end>{{comment.replyCount}}</ion-badge>
+  </ion-item>
+</ion-card>

@@ -1,0 +1,19 @@
+page-add-goods {
+  ion-slide {
+    height: 250px !important;
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .add-goods-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    ion-icon {
+      font-size: 4em;
+    }
+  }
+}

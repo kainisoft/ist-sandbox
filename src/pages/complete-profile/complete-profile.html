@@ -1,0 +1,42 @@
+<ion-content no-padding>
+  <ng-container *ngIf="user else loading">
+    <profile-header [editable]="true" [uid]="user.id"></profile-header>
+
+    <div id="content">
+      <ion-segment [(ngModel)]="mode">
+        <ion-segment-button [value]="modes.INFO">
+          {{'Мy car' | translate}}
+        </ion-segment-button>
+        <ion-segment-button [value]="modes.GALLERY">
+          {{'Мy gallery' | translate}}
+        </ion-segment-button>
+      </ion-segment>
+
+      <ng-container [ngSwitch]="mode">
+        <ng-container *ngSwitchCase="modes.INFO">
+          <form [formGroup]="form" padding-top>
+            <ion-list>
+              <element-builder [element]="form.getYear()"></element-builder>
+
+              <element-builder [element]="form.getVolume()"></element-builder>
+            </ion-list>
+          </form>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="modes.GALLERY">
+          <photo-uploader [photos]="photos" (photoUploaded)="onPhotoUploaded()"></photo-uploader>
+        </ng-container>
+      </ng-container>
+    </div>
+
+    <ion-fab *ngIf="isCompleted" bottom right class="complete-action">
+      <button ion-fab color="secondary" (click)="completeProfile()" class="pop-in">
+        <ion-icon name="ios-checkmark-circle-outline"></ion-icon>
+      </button>
+    </ion-fab>
+  </ng-container>
+</ion-content>
+
+<ng-template #loading>
+  <loading></loading>
+</ng-template>

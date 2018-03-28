@@ -1,0 +1,16 @@
+<ion-card (click)="openFeedPage()">
+  <photo-list [entityType]="photoTypes.IDEA" [entityId]="idea.id" [showIfIsEmpty]="false"></photo-list>
+  <ion-card-content>
+    <h2 class="card-title">
+      {{idea.title}}
+    </h2>
+    <p>
+      {{idea.desc}}
+    </p>
+  </ion-card-content>
+  <ion-item *ngIf="comment && comment.likeCount">
+    <ion-icon name='thumbs-up' item-start></ion-icon>
+    {{'Votes' | translate}}
+    <ion-badge item-end>{{comment.likeCount}}</ion-badge>
+  </ion-item>
+</ion-card>

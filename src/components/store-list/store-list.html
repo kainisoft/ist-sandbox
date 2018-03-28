@@ -1,0 +1,25 @@
+<ng-container *ngIf="entities else loading">
+  <ng-container *ngIf="entities.length else noItems">
+    <ion-list>
+      <ng-container *ngFor="let goods of entities; trackBy: trackByFn">
+        <store-item item-content [goods]="goods"></store-item>
+      </ng-container>
+    </ion-list>
+  </ng-container>
+</ng-container>
+
+<ng-container [ngSwitch]="loadMoreState">
+  <ng-container *ngSwitchCase="loadMoreStates.AWAITING || loadMoreStates.LOADING">
+    <ion-infinite-scroll (ionInfinite)="$event.waitFor(loadMore())">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ng-container>
+</ng-container>
+
+<ng-template #loading>
+  <loading></loading>
+</ng-template>
+
+<ng-template #noItems>
+  <no-items icon="basket" message="So far, no one is selling anything. Be the first!"></no-items>
+</ng-template>
