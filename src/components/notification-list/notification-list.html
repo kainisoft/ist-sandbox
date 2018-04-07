@@ -1,0 +1,25 @@
+<ng-container *ngIf="entities else loading">
+  <ng-container *ngIf="entities.length else noItems">
+    <ion-list>
+      <ng-container *ngFor="let notification of entities; trackBy: trackByFn">
+        <notification-item item-content [notification]="notification"></notification-item>
+      </ng-container>
+    </ion-list>
+  </ng-container>
+</ng-container>
+
+<ng-container [ngSwitch]="loadMoreState">
+  <ng-container *ngSwitchCase="loadMoreStates.AWAITING || loadMoreStates.LOADING">
+    <ion-infinite-scroll (ionInfinite)="$event.waitFor(loadMore())">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ng-container>
+</ng-container>
+
+<ng-template #loading>
+  <loading></loading>
+</ng-template>
+
+<ng-template #noItems>
+  <no-items message="No notifications, yet" icon="notifications"></no-items>
+</ng-template>

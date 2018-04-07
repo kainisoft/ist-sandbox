@@ -172,6 +172,9 @@ export class MessageListComponent extends AbstractLoadMoreComponent<Message> imp
     this.chatService.markAsRead(this.chat, this.uid);
   }
 
+  protected normalizeList(entities: Message[]): Message[] {
+    return super.normalizeList(entities).reverse();
+  }
 }
 
 export interface List {

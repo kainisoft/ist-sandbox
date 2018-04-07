@@ -5,16 +5,16 @@ import {
   AngularFirestoreDocument,
   DocumentChangeAction
 } from 'angularfire2/firestore';
-import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
 import { Observable } from 'rxjs/Observable';
 
 import { Entity } from './entity';
+import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
 
 @Injectable()
 export abstract class CustomFirestore<T extends Entity> {
   public LIMIT = 10;
 
-  constructor(protected afs: AngularFirestore) { }
+  protected constructor(protected afs: AngularFirestore) { }
 
   protected sanitizeEntity(entity: T): T {
     delete entity.id;

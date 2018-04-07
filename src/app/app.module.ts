@@ -1,7 +1,5 @@
 import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { registerLocaleData } from '@angular/common';
-import localRu from '@angular/common/locales/ru';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -10,6 +8,9 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { Camera } from '@ionic-native/camera';
 import { Firebase } from '@ionic-native/firebase';
 import { TranslateParser } from '@ngx-translate/core/src/translate.parser';
+import { Keyboard } from '@ionic-native/keyboard';
+import { registerLocaleData } from '@angular/common';
+import localRu from '@angular/common/locales/ru';
 
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { AngularFireModule } from 'angularfire2';
@@ -47,6 +48,7 @@ import { ScreamItemComponent } from '../components/scream-item/scream-item';
 import { FeedItemScreamComponent } from '../components/feed-item-scream/feed-item-scream';
 import { IdeaItemComponent } from '../components/idea-item/idea-item';
 import { FeedItemIdeaComponent } from '../components/feed-item-idea/feed-item-idea';
+import { FeedItemUnKnowComponent } from '../components/feed-item-unknow/feed-item-unknow';
 import { IdeaListComponent } from '../components/idea-list/idea-list';
 import { ScreamListComponent } from '../components/scream-list/scream-list';
 import { MessageListComponent } from '../components/message-list/message-list';
@@ -56,6 +58,13 @@ import { ConversationItemComponent } from '../components/conversation-item/conve
 import { MessageDeliveredStatusComponent } from '../components/message-delivered-status/message-delivered-status';
 import { FeedListComponent } from '../components/feed-list/feed-list';
 import { SideMenuComponent } from '../components/side-menu/side-menu';
+import { NotificationListComponent } from '../components/notification-list/notification-list';
+import { NotificationItemComponent } from '../components/notification-item/notification-item';
+import { NotificationItemLikeComponent } from '../components/notification-item-like/notification-item-like';
+import { NotificationItemLikeCommentComponent } from '../components/notification-item-like-comment/notification-item-like-comment';
+import { NotificationItemCommentComponent } from '../components/notification-item-comment/notification-item-comment';
+import { NotificationItemReplyComponent } from '../components/notification-item-reply/notification-item-reply';
+import { NotificationItemUnKnowComponent } from '../components/notification-item-unknow/notification-item-unknow';
 
 import { TextElementComponent } from '../forms/elements/text/text';
 import { EmailElementComponent } from '../forms/elements/email/email';
@@ -89,6 +98,7 @@ import { ChatPage } from '../pages/chat/chat';
 import { ConversationPage } from '../pages/conversation/conversation';
 import { NotificationPage } from '../pages/notification/notification';
 import { TermsOfUsePage } from '../pages/terms-of-use/terms-of-use';
+import { AboutPage } from '../pages/about/about';
 
 import { TimeAgoPipe } from '../pipes/time-ago';
 import { DisplayNamePipe } from '../pipes/display-name';
@@ -110,14 +120,14 @@ import { ScreamService } from '../providers/scream';
 import { IdeaService } from '../providers/idea';
 import { ChatService } from '../providers/chat';
 import { MessageService } from '../providers/message';
-import { NotificationService } from '../providers/notification';
+import { MessageNotifyService } from '../providers/message-notify';
 import { LogService } from '../providers/log';
 import { CarService } from '../providers/car';
 import { StoreListComponent } from '../components/store-list/store-list';
-import { Keyboard } from '@ionic-native/keyboard';
 import { UserStatusService } from '../providers/user-status';
-import { AboutPage } from '../pages/about/about';
 import { ReportService } from '../providers/report';
+import { NotificationService } from '../providers/notification';
+import { CounterService } from '../providers/counter';
 
 registerLocaleData(localRu, 'ru');
 
@@ -197,6 +207,7 @@ const components = [
   FeedItemGoodsComponent,
   FeedItemScreamComponent,
   FeedItemIdeaComponent,
+  FeedItemUnKnowComponent,
   FeedHeaderComponent,
 
   // Form
@@ -234,7 +245,16 @@ const components = [
 
   // Idea
   IdeaItemComponent,
-  IdeaListComponent
+  IdeaListComponent,
+
+  // Notification
+  NotificationListComponent,
+  NotificationItemComponent,
+  NotificationItemLikeComponent,
+  NotificationItemLikeCommentComponent,
+  NotificationItemCommentComponent,
+  NotificationItemReplyComponent,
+  NotificationItemUnKnowComponent
 ];
 
 const pipes = [
@@ -261,10 +281,12 @@ const services = [
   IdeaService,
   ChatService,
   MessageService,
-  NotificationService,
+  MessageNotifyService,
   LogService,
   CarService,
-  ReportService
+  ReportService,
+  NotificationService,
+  CounterService
 ];
 
 @NgModule({
@@ -310,7 +332,7 @@ const services = [
     Keyboard,
 
     {provide: HAMMER_GESTURE_CONFIG, useClass: ionicGalleryModal.GalleryModalHammerConfig},
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
 export class AppModule {}

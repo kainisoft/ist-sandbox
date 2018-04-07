@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="istsandbox.kainisoft.com" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="istsandbox.kainisoft.com" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>iSt•SandBox</name>
     <description>iSt•SandBox</description>
     <author email="kainisoft@gmail.com" href="https://github.com/kainisoft">Kairat Bakytov</author>

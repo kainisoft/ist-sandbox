@@ -25,12 +25,29 @@ export class CommentService extends CustomFirestore<Comment> {
   findList(parent: string, startAfter: DocumentSnapshot = null): Observable<Comment[]> {
     const collection: AngularFirestoreCollection<Comment> = this.afs.collection(this.COMMENT_PATH, ref => {
       let query: Query = ref;
-      query = query.where('parent', '==', parent);
-      query = query.orderBy('createdAt');
+
+      query = query
+        .where('parent', '==', parent)
+        .orderBy('createdAt');
 
       if (startAfter) {
         query = query.startAfter(startAfter);
       }
+
+      return query.limit(this.LIMIT);
+    });
+
+    return this.getEntities(collection);
+  }
+
+  findListStartAt(parent: string, endAt: DocumentSnapshot): Observable<Comment[]> {
+    const collection: AngularFirestoreCollection<Comment> = this.afs.collection(this.COMMENT_PATH, ref => {
+      let query: Query = ref;
+
+      query = query
+        .where('parent', '==', parent)
+        .orderBy('createdAt')
+        .startAt(endAt);
 
       return query.limit(this.LIMIT);
     });

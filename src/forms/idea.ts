@@ -13,7 +13,7 @@ export class IdeaForm extends CustomForm {
 
     const title = new TextElement(TITLE_ELEMENT);
     title.setRequired();
-    title.setLabel('Title');
+    title.setLabel('Name');
     title.setPlaceHolder('Two, three words');
     this.addElement(title);
 

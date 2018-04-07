@@ -11,6 +11,8 @@ import {
 } from '@angular/core';
 import { ComponentRef } from '@angular/core/src/linker/component_factory';
 
+import { NavParams } from 'ionic-angular';
+
 import { CustomComponent } from '../../core/component';
 
 import { CommentsListComponent } from '../comments-list/comments-list';
@@ -35,6 +37,7 @@ export class CommentItemComponent extends CustomComponent implements OnInit, OnD
   innerLevel: number;
   user: User;
   componentRef: ComponentRef<CommentsListComponent>;
+  isHighlight = false;
 
   get level(): number {
     return this.innerLevel;
@@ -51,12 +54,25 @@ export class CommentItemComponent extends CustomComponent implements OnInit, OnD
   @Input()
   protected path: string[];
 
+  protected view: ViewContainerRef;
+
+  get replyViewContainerRef(): ViewContainerRef {
+    return this.view;
+  }
+
   @ViewChild('reply', {
     read: ViewContainerRef
   })
-  protected replyViewContainerRef: ViewContainerRef;
+  set replyViewContainerRef(view: ViewContainerRef) {
+    this.view = view;
 
-  constructor(protected userService: UserService,
+    if (this.view) {
+      this.loadInitReplies();
+    }
+  }
+
+  constructor(protected navParams: NavParams,
+              protected userService: UserService,
               protected elementRef: ElementRef,
               protected appService: AppService,
               protected likeService: LikeService,
@@ -70,9 +86,32 @@ export class CommentItemComponent extends CustomComponent implements OnInit, OnD
     this.path = [...this.path];
     this.path.push(this.commentEntity.id);
 
+    this.initUser();
+    this.initHighlightComment();
+  }
+
+  protected initUser(): void {
     this.hub.push(this.userService.find(this.commentEntity.uid).subscribe(user => {
       this.user = user;
     }));
+  }
+
+  protected initHighlightComment(): void {
+    const {comments} = this.navParams.data;
+
+    this.isHighlight = Array.isArray(comments) && comments.includes(this.commentEntity.id);
+  }
+
+  loadInitReplies(): void {
+    const {comments} = this.navParams.data;
+
+    if (Array.isArray(comments) && comments.length) {
+      const [commentId, replyId] = comments;
+
+      if (replyId && this.commentEntity.id === commentId) {
+        this.loadReplies();
+      }
+    }
   }
 
   showReplays(): void {
@@ -97,6 +136,10 @@ export class CommentItemComponent extends CustomComponent implements OnInit, OnD
   }
 
   protected loadReplies(): void {
+    if (this.componentRef) {
+      return;
+    }
+
     this.replyViewContainerRef.clear();
 
     const factory = this.factoryResolver.resolveComponentFactory(CommentsListComponent);

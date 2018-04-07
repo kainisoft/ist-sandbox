@@ -1,7 +1,7 @@
 <ion-item *ngIf="user" [ngClass]="'level' + level">
   <profile-thumbnail item-start [user]="user"></profile-thumbnail>
 
-  <div class="bubble">
+  <div class="bubble" [ngClass]="{'highlight': isHighlight}">
     <h2>{{user.profile.firstName}} {{user.profile.lastName}}</h2>
     <p class="text">{{commentEntity.text}}</p>
     <ion-icon *ngIf="commentEntity.likeCount" (click)="openLikesPage()" name="thumbs-up" float-right class="like-counter">

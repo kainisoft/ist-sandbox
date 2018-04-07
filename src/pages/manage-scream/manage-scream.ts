@@ -28,7 +28,7 @@ export class ManageScreamPage extends CustomComponent implements OnInit {
   photoTypes = PhotoTypes;
   scream: Scream;
 
-  protected screamId: string = this.navParams.get('screamId');
+  screamId: string = this.navParams.get('screamId');
 
   constructor(protected appService: AppService,
               protected localizeService: LocalizeService,

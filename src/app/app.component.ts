@@ -6,27 +6,29 @@ import { Platform } from 'ionic-angular';
 
 import { CustomComponent } from '../core/component';
 
-import { User } from '../interfaces/user';
+import { UserStatus } from '../interfaces/user-status';
 
 import { SplashScreenPage } from '../pages/splash-screen/splash-screen';
 
 import { LocalizeService } from '../providers/localize';
 import { AuthService } from '../providers/auth';
 import { UserService } from '../providers/user';
+import { UserStatusService } from '../providers/user-status';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class IstApp extends CustomComponent implements OnInit {
   rootPage: any = SplashScreenPage;
-  user: User;
+  user: UserStatus;
 
   constructor(protected platform: Platform,
               protected statusBar: StatusBar,
               protected splashScreen: SplashScreen,
               protected localizeService: LocalizeService,
               protected authService: AuthService,
-              protected userService: UserService) {
+              protected userService: UserService,
+              protected userStatusService: UserStatusService) {
     super();
   }
 
@@ -56,11 +58,16 @@ export class IstApp extends CustomComponent implements OnInit {
         this.user = null;
       } else {
         this.hub.push(this.userService.find().subscribe(user => {
-          this.user = user;
-
-          if (this.localizeService.currentLang.localeCompare(this.user.lang) !== 0) {
-            this.localizeService.use(this.user.lang);
+          if (!user) {
+            return;
           }
+
+          if (this.localizeService.currentLang.localeCompare(user.lang) !== 0) {
+            this.localizeService.use(user.lang);
+          }
+        }));
+        this.hub.push(this.userStatusService.find(user.uid).subscribe(userStatus => {
+          this.user = userStatus;
         }));
       }
     });

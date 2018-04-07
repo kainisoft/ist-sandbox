@@ -1,6 +1,6 @@
 <ng-container *ngIf="entities else loading">
   <ng-container *ngIf="entities.length else noItems">
-    <ng-container *ngFor="let feed of entities">
+    <ng-container *ngFor="let feed of entities; trackBy: trackByFn">
       <feed-item
         [feedEntity]="feed"
         [commentsClickHandler]="onCommentsClick.bind(this)"

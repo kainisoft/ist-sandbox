@@ -62,4 +62,8 @@ export class FeedListComponent extends AbstractLoadMoreComponent<Feed> implement
     });
   }
 
+  trackByFn(index: number, item: Feed): string {
+    return item.id;
+  }
+
 }

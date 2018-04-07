@@ -14,7 +14,7 @@ export class ArrayUtils {
       const date1 = entity1.createdAt;
       const date2 = entity2.createdAt;
 
-      return date1.getTime() - date2.getTime();
+      return date2.getTime() - date1.getTime();
     });
   }
 

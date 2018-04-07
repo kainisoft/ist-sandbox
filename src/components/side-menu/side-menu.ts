@@ -8,7 +8,7 @@ import { PresenceStatus, User } from '../../interfaces/user';
 import { Menu } from '../../interfaces/menu';
 
 import { NavigatorService } from '../../providers/navigator';
-import { NotificationService } from '../../providers/notification';
+import { MessageNotifyService } from '../../providers/message-notify';
 import { UserService } from '../../providers/user';
 import { AppService } from '../../providers/app';
 import { AuthService } from '../../providers/auth';
@@ -85,7 +85,7 @@ export class SideMenuComponent extends CustomComponent implements OnInit {
   constructor(protected appService: AppService,
               protected authService: AuthService,
               protected navigatorService: NavigatorService,
-              protected notificationService: NotificationService,
+              protected notificationService: MessageNotifyService,
               protected userService: UserService,
               protected platform: Platform) {
     super();

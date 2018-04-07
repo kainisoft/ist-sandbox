@@ -1,0 +1,55 @@
+<ng-container *ngIf="user else loading">
+  <ion-item [ngClass]="{'read': !notification.isRead}">
+    <profile-thumbnail item-start [user]="user"></profile-thumbnail>
+
+    <strong class="message-text">{{user | displayName}}</strong>
+
+    <ng-container [ngSwitch]="notification.entityType">
+      <ng-container *ngSwitchCase="notificationTypes.LIKE">
+        <notification-item-like
+          [notification]="notification"
+          (onClick)="clickHandler($event)"
+        >
+        </notification-item-like>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="notificationTypes.LIKE_COMMENT">
+        <notification-item-like-comment
+          [notification]="notification"
+          (onClick)="clickHandler($event)"
+        >
+        </notification-item-like-comment>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="notificationTypes.COMMENT">
+        <notification-item-comment
+          [notification]="notification"
+          (onClick)="clickHandler($event)"
+        >
+        </notification-item-comment>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="notificationTypes.REPLY">
+        <notification-item-reply
+          [notification]="notification"
+          (onClick)="clickHandler($event)"
+        >
+        </notification-item-reply>
+      </ng-container>
+
+      <ng-container *ngSwitchDefault>
+        <notification-item-unknow></notification-item-unknow>
+      </ng-container>
+    </ng-container>
+
+    <ion-note item-end class="note">
+      <div>
+        {{notification.createdAt | timeAgo | translate}}
+      </div>
+    </ion-note>
+  </ion-item>
+</ng-container>
+
+<ng-template #loading>
+  <loading></loading>
+</ng-template>

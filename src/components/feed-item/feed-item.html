@@ -21,6 +21,10 @@
     <ng-container *ngSwitchCase="feedTypes.IDEA">
       <feed-item-idea [feedEntity]="feedEntity"></feed-item-idea>
     </ng-container>
+
+    <ng-container *ngSwitchDefault>
+      <feed-item-unknow></feed-item-unknow>
+    </ng-container>
   </ng-container>
 
   <ion-item>

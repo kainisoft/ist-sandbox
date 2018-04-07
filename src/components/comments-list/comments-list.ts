@@ -11,6 +11,7 @@ import { UserService } from '../../providers/user';
 import { CommentService } from '../../providers/comment';
 
 import { ArrayUtils } from '../../utils/array';
+import { NavParams } from 'ionic-angular';
 
 @Component({
   selector: 'comments-list',
@@ -36,7 +37,8 @@ export class CommentsListComponent extends CustomComponent implements OnInit {
   path: string[] = [];
 
   constructor(protected userService: UserService,
-              protected commentService: CommentService) {
+              protected commentService: CommentService,
+              protected navParams: NavParams) {
     super();
   }
 
@@ -47,8 +49,8 @@ export class CommentsListComponent extends CustomComponent implements OnInit {
     this.isReply = this.path.length > 1;
 
     this.initUser();
-    this.initCommnets();
     this.initForm();
+    this.initComments();
   }
 
   protected initUser(): void {
@@ -57,12 +59,33 @@ export class CommentsListComponent extends CustomComponent implements OnInit {
     }));
   }
 
-  protected initCommnets(): void {
-    this.hub.push(this.commentService.findList(this.id).subscribe(comments => {
-      this.comments = this.normalizeComments(comments);
+  protected initComments(): void { // TODO refactor
+    const {comments} = this.navParams.data;
 
-      this.setIsMoreAwaiting(this.comments);
-    }));
+    if (Array.isArray(comments) && comments.length) {
+      let commentId;
+
+      if (this.isReply && comments.length >= 2) { // TODO definitely refactor
+        [, commentId] = comments;
+      } else {
+        [commentId] = comments;
+      }
+
+      this.commentService.find(commentId).take(1).toPromise()
+        .then(comment => {
+          this.hub.push(this.commentService.findListStartAt(this.id, comment.ds).subscribe(comments => {
+            this.comments = this.normalizeComments(comments);
+
+            this.setIsMoreAwaiting(this.comments);
+          }));
+        });
+    } else {
+      this.hub.push(this.commentService.findList(this.id).subscribe(comments => {
+        this.comments = this.normalizeComments(comments);
+
+        this.setIsMoreAwaiting(this.comments);
+      }));
+    }
   }
 
   protected initForm(): void {
@@ -119,7 +142,7 @@ export class CommentsListComponent extends CustomComponent implements OnInit {
 
     return ArrayUtils.sortByCreatedAt(
       ArrayUtils.uniqueEntities(comments)
-    );
+    ).reverse();
   }
 
   protected getLastComment(): Comment {

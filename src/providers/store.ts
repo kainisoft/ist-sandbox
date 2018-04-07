@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import * as firebase from 'firebase';
+import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
 import Query = firebase.firestore.Query;
 
 import { CustomFirestore } from '../core/firestore';
 
 import { Goods } from '../interfaces/store';
-import DocumentSnapshot = firebase.firestore.DocumentSnapshot;
 
 @Injectable()
 export class StoreService extends CustomFirestore<Goods> {

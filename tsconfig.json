@@ -6,7 +6,8 @@
     "experimentalDecorators": true,
     "lib": [
       "dom",
-      "es2015"
+      "es2015",
+      "es2016.array.include"
     ],
     "module": "es2015",
     "moduleResolution": "node",
@@ -14,7 +15,8 @@
     "target": "es5",
     "typeRoots": [
       "../node_modules/@types"
-    ]
+    ],
+    "importHelpers": true
   },
   "include": [
     "src/**/*.ts"

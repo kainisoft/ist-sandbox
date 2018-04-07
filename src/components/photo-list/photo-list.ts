@@ -45,4 +45,8 @@ export class PhotoListComponent extends CustomComponent implements OnInit {
     return modal.present();
   }
 
+  trackByFn(index: number, item: Photo): string {
+    return item.id;
+  }
+
 }

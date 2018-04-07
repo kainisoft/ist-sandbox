@@ -1,7 +1,7 @@
 <ng-container *ngIf="photos else loading">
   <div *ngIf="photos.length else noPhotos" padding>
     <ion-slides [pager]="true">
-      <ion-slide *ngFor="let photo of photos; index as i;">
+      <ion-slide *ngFor="let photo of photos; index as i; trackBy: trackByFn">
         <div class="img" [style.backgroundImage]="'url(' + photo.url + ')'" (click)="openViewer(i)"></div>
       </ion-slide>
     </ion-slides>
